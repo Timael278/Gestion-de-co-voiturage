@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-voiturages</title>
+    <style>
+        /* Style du menu */
+        .menu-du-haut {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 25px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-du-haut button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .menu-du-haut button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .menu-du-haut button:active {
+            transform: scale(0.95);
+        }
+
+        /* Style général */
+        body {
+            background-color: whitesmoke;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Titre principal */
+        .gros-title {
+            text-align: center;
+            margin-top: 10%;
+            font-size: 5rem; /* Taille responsive */
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Sous-titres */
+        .sub-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: normal;
+            color: #666;
+            line-height: 0.1; /* Texte plus compact */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-sur-toute-les-pages">
+        <menu class="menu-du-haut">
+            <button>Recherche</button>
+            <button>Publication d'annonce</button>
+            <button>Messagerie</button>
+        </menu>
+    </div>
+
+    <div class="recherche-de-trajet">
+        <h1 class="gros-title">Rechercher un trajet</h1>
+        <h3 class="sub-title">Recherchez un trajet</h3>
+        <h3 class="sub-title">Tout près de chez vous</h3>
+    </div>
+
+</body>
+</html>
