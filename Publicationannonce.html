@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication d'annonce</title>
+    <style>
+        /* Style du bouton flottant */
+        .ajouterdes {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            font-size: 30px;
+            border-radius: 50%;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 70px;
+            height: 70px;
+        }
+
+        /* Style de la pop-up (modale) */
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* Style de la section des publications */
+        #publications {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .trajet {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .titlegros{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section des publications -->
+    <h2 class="titlegros">Mes publications de trajet :</h2>
+    <div id="publications">
+        <p>Aucun trajet ajouté pour le moment.</p>
+    </div>
+
+    <!-- Bouton + -->
+    <button class="ajouterdes" onclick="ouvrirPopup()">&#43;</button>
+
+    <!-- Pop-up (modale) -->
+    <div class="modal" id="popup">
+        <div class="modal-content">
+            <span class="close" onclick="fermerPopup()">&times;</span>
+            <h3>Ajouter un trajet</h3>
+            <label>Départ:</label>
+            <input type="text" id="depart" placeholder="Lieu de départ"><br><br>
+
+            <label>Arrivée:</label>
+            <input type="text" id="arrivee" placeholder="Lieu d'arrivée"><br><br>
+
+            <label>Heure:</label>
+            <input type="time" id="heure"><br><br>
+
+            <button onclick="ajouterTrajet()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour ouvrir la pop-up
+        function ouvrirPopup() {
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        // Fonction pour fermer la pop-up
+        function fermerPopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        // Fonction pour ajouter un trajet
+        function ajouterTrajet() {
+            var depart = document.getElementById("depart").value;
+            var arrivee = document.getElementById("arrivee").value;
+            var heure = document.getElementById("heure").value;
+
+            if (depart === "" || arrivee === "" || heure === "") {
+                alert("Veuillez remplir tous les champs.");
+                return;
+            }
+
+            var publications = document.getElementById("publications");
+            if (publications.innerHTML.includes("Aucun trajet ajouté")) {
+                publications.innerHTML = "";
+            }
+
+            var trajetDiv = document.createElement("div");
+            trajetDiv.classList.add("trajet");
+            trajetDiv.innerHTML = `<strong>Départ:</strong> ${depart} <br> 
+                                   <strong>Arrivée:</strong> ${arrivee} <br> 
+                                   <strong>Heure:</strong> ${heure}`;
+
+            publications.appendChild(trajetDiv);
+
+            fermerPopup(); // Fermer la pop-up après ajout
+        }
+    </script>
+
+</body>
+</html>
